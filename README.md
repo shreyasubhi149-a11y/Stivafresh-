@@ -2,6 +2,7 @@
 
 A work-in-progress grocery and expiry-tracking web application built by Shreya Tiwari.
 Track freshness, store smarter, and reduce avoidable food waste.
+Vexar Technologies is my personal project brand, currently used for StivaFresh.
 
 ## What it does
 
