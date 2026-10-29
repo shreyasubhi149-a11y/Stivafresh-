@@ -91,24 +91,7 @@ The current HTML includes its CSS and JavaScript. Older standalone `style.css` a
 
 Do not expose this development server to the public internet as-is. Public deployment needs authentication, per-user data isolation, input validation and protection of paid API and push endpoints.
 
-## Upload to GitHub
 
-1. Extract this package. Create a new repository named `stivafresh` on GitHub.
-2. For a terminal-based upload, run the commands below inside the extracted folder.
-3. Replace `YOUR_GITHUB_USERNAME` with your own username. Review the staged files before committing.
-
-```bash
-git init
-git add .
-git status
-# Confirm .env, .db and private-key files are absent from the staged list.
-git commit -m "Add StivaFresh grocery tracking application"
-git branch -M main
-git remote add origin https://github.com/YOUR_GITHUB_USERNAME/stivafresh.git
-git push -u origin main
-```
-
-If GitHub offers an upload-files screen, upload the extracted project contents and preserve the `templates` and `static` folders. Do not upload the ZIP itself as the source code. Ensure `.gitignore` and `.env.example` are included.
 
 A `.gitignore` only prevents new untracked files from being added. If a secret was already committed or publicly shared, remove it from the repository history and rotate that credential. Do not add the original database or private keys later.
 
