@@ -1,0 +1,15 @@
+{
+  "name": "StivaFresh",
+  "short_name": "StivaFresh",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4fff4",
+  "theme_color": "#2e7d32",
+  "description": "Track freshness. Store smarter. Reduce food waste.",
+  "icons": [
+    {
+      "src": "/static/stivafresh_logo.png",
+      "type": "image/png"
+    }
+  ]
+}

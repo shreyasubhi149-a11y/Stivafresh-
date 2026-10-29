@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/static/manifest.json">
+    <title>STIVA | A Vexar Technologies product</title>
+
+    <style>
+:root{--ink:#171916;--ink-2:#252922;--ink-soft:#555b50;--ivory:#f5f2e9;--paper:#fffdf8;--gold:#d1b16b;--gold-deep:#9a7736;--sage:#b6c8a8;--sage-deep:#466344;--line:#e5dfd1;--muted:#74786d;--danger:#a8433c;--warning:#8b682b;--shadow:0 20px 55px rgba(27,30,24,.09)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:var(--ivory);color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif;overflow-x:hidden}button,input,select{font:inherit}button{cursor:pointer;border:1px solid transparent;border-radius:12px;padding:13px 19px;background:var(--ink);color:var(--paper);font-weight:700;transition:transform .2s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease}button:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(23,25,22,.15)}button:disabled{opacity:.65;cursor:wait;transform:none}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid rgba(209,177,107,.65);outline-offset:3px}
+.animated-background{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at 5% 8%,rgba(209,177,107,.13),transparent 26%),radial-gradient(circle at 96% 76%,rgba(182,200,168,.18),transparent 30%),var(--ivory)}.orb,.glow{display:none}.animated-background::before,.animated-background::after{content:none}
+.brand-bar{position:relative;z-index:4;display:flex;align-items:center;gap:13px;padding:16px clamp(18px,4vw,58px);border-bottom:1px solid rgba(209,177,107,.52);background:#171916;color:var(--paper);box-shadow:0 7px 24px rgba(0,0,0,.08)}.brand-symbol{display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px;border-radius:11px;background:linear-gradient(145deg,#f0d99c,var(--gold));color:#171916;clip-path:polygon(0 0,100% 0,100% 78%,78% 100%,0 100%)}.brand-symbol svg{display:block;width:30px;height:30px}.brand-word{font-size:19px;letter-spacing:.2em;font-weight:900}.brand-attribution{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-top:5px;font-weight:800}.brand-spacer{flex:1}.brand-status{font-size:10px;color:#d4d2c9;letter-spacing:.16em;font-weight:700}
+.home,.dashboard,.page{position:relative;z-index:2}.home{isolation:isolate;overflow:hidden;min-height:calc(100vh - 74px);padding:70px 24px 66px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(209,177,107,.12),transparent 42%),linear-gradient(145deg,#20231e,#151713 72%);color:var(--paper)}.home:before{content:"";position:absolute;z-index:-1;width:440px;height:440px;right:-190px;top:5%;border:1px solid rgba(209,177,107,.16);border-radius:50%;box-shadow:0 0 0 35px rgba(209,177,107,.025),0 0 0 75px rgba(209,177,107,.02)}.home:after{content:"";position:absolute;z-index:-1;width:250px;height:250px;left:-130px;bottom:10%;border:1px solid rgba(182,200,168,.18);border-radius:50%;box-shadow:0 0 0 28px rgba(182,200,168,.025)}.hero-brand{display:flex;align-items:center;gap:17px;margin-bottom:27px}.hero-symbol{width:68px;height:68px;display:grid;place-items:center;background:linear-gradient(145deg,#2c3028,#171916);color:var(--gold);border:1px solid rgba(209,177,107,.8);border-radius:17px;font-size:38px;font-weight:950;box-shadow:0 14px 32px rgba(0,0,0,.25)}.logo-name{font-size:clamp(40px,6vw,68px);font-weight:950;letter-spacing:.19em;line-height:1;color:#fffdf8}.hero-word-wrap{text-align:left}.byline{margin-top:10px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:750}.eyebrow{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:850}.home h2{font-size:clamp(30px,4.6vw,54px);line-height:1.08;max-width:830px;margin:0 auto 18px;letter-spacing:-.045em;color:#fffdf8}.home>p{max-width:630px;color:#c7c9bf;font-size:16px;line-height:1.8;margin:0 auto}.home button{margin-top:28px;background:linear-gradient(135deg,#e4c984,var(--gold));color:#191a16;padding:15px 31px;border-radius:12px;box-shadow:0 9px 25px rgba(209,177,107,.16)}.home button:after{content:"  →";font-size:17px;margin-left:7px}.feature-strip{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin-top:54px;width:min(100%,950px)}.feature-card{width:250px;min-height:152px;text-align:left;padding:23px;border:1px solid rgba(209,177,107,.2);border-radius:17px;background:rgba(255,255,255,.055);box-shadow:0 12px 30px rgba(0,0,0,.1);backdrop-filter:blur(8px);transition:transform .25s ease,border-color .25s ease,background .25s ease}.feature-card:hover{transform:translateY(-5px);border-color:rgba(209,177,107,.7);background:rgba(255,255,255,.085)}.feature-icon{display:grid;place-items:center;width:41px;height:41px;border-radius:12px;background:rgba(209,177,107,.13);border:1px solid rgba(209,177,107,.2);font-size:20px}.feature-card h3{margin:16px 0 7px;color:#fffdf8;font-size:15px}.feature-card p{margin:0;color:#bfc2b8;font-size:13px;line-height:1.6}
+h1{font-size:clamp(30px,4vw,43px);letter-spacing:-.04em;margin:0 0 10px}.dashboard{display:none;min-height:calc(100vh - 74px);padding:48px 24px 70px;text-align:center}.section-kicker{color:var(--gold-deep);text-transform:uppercase;letter-spacing:.19em;font-size:10px;font-weight:900}.dashboard h1,.page h1{color:var(--ink)}.dashboard>p,.page>p{color:var(--muted);margin:0 auto;max-width:650px}.dashboard>button{position:absolute;right:clamp(18px,4vw,55px);top:28px;background:#20231e;border:1px solid rgba(209,177,107,.6);font-size:12px}.dashboard>button:hover{background:#33372e}.stats-grid{max-width:1120px;margin:38px auto 30px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.stat-card{position:relative;overflow:hidden;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px 20px;text-align:left;box-shadow:0 9px 28px rgba(32,34,31,.04)}.stat-card:after{content:"";position:absolute;right:-26px;top:-28px;width:85px;height:85px;border-radius:50%;background:rgba(209,177,107,.09)}.stat-icon{font-size:22px;color:var(--gold-deep)}.stat-number{font-size:38px;font-weight:850;color:var(--ink);margin:13px 0 5px;letter-spacing:-.04em}.stat-label{color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.menu{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;max-width:1120px;margin:27px auto}.menu button{width:245px;min-height:126px;text-align:left;padding:22px;background:linear-gradient(145deg,#282c25,#191b17);color:var(--paper);border:1px solid #3b4036;border-radius:17px;font-size:16px;line-height:1.65}.menu button:hover{background:linear-gradient(145deg,#34392f,#20231e);border-color:var(--gold)}.menu button small{display:block;margin-top:7px;font-size:12px;font-weight:450;color:#c9cabe;line-height:1.5}
+.page{display:none;min-height:calc(100vh - 74px);padding:48px 20px 64px;text-align:center}.page h1{margin-bottom:9px}.form-container,.advisor-box{max-width:790px;margin:30px auto;padding:clamp(20px,4vw,40px);background:var(--paper);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);text-align:left}.form-row{margin:17px 0;text-align:left}.form-row label{display:block;font-size:12px;margin-bottom:8px;font-weight:800;color:var(--ink-soft);letter-spacing:.025em}.form-row input,.form-row select{width:100%;padding:14px 14px;border-radius:11px;border:1px solid #d9d3c6;background:#fffefa;color:var(--ink);font-size:14px}.form-row input:focus,.form-row select:focus{border-color:var(--gold)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 17px}.add-button{width:100%;margin:12px 0 5px;background:linear-gradient(135deg,#e4c984,var(--gold));color:#1b1b17}.outline-button,.back-button{background:transparent;color:var(--ink);border:1px solid #d8d1c2}.outline-button:hover,.back-button:hover{background:#eee8dc}.scan-panel{padding:23px;margin:0 0 25px;border:1px solid rgba(209,177,107,.7);border-radius:17px;background:linear-gradient(135deg,#fbf7ed,#f5f0e3);text-align:left}.scan-panel h3{margin:0 0 8px;font-size:17px;color:var(--ink)}.scan-panel>p{font-size:13px;color:var(--muted);margin:0 0 15px;line-height:1.6}.scan-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.scan-actions input{flex:1;min-width:180px;padding:10px;background:var(--paper);border:1px solid var(--line);border-radius:10px}.scan-actions .gold-button{background:var(--ink);color:var(--gold);border:1px solid var(--gold);white-space:nowrap}.scan-preview{display:none;max-width:240px;max-height:240px;object-fit:contain;margin:17px auto 5px;border-radius:13px;border:1px solid var(--line);box-shadow:0 8px 25px rgba(0,0,0,.08)}.scan-status{font-size:13px;color:var(--sage-deep);margin-top:12px;min-height:18px;line-height:1.5}.scan-note{font-size:11px!important;color:var(--muted)!important;margin-top:10px!important}.scan-text-details{margin-top:12px;font-size:12px;color:var(--ink-soft)}.scan-text-details summary{cursor:pointer;font-weight:800;color:var(--gold-deep);padding:6px 0}.scan-text-details pre{max-height:180px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;padding:12px;background:#fffdf8;border:1px solid var(--line);border-radius:10px;font:12px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--ink)}.grocery-list{width:100%;max-width:1120px;margin:30px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;align-items:stretch}.grocery-card{background:var(--paper);padding:24px;border-radius:18px;text-align:left;border:1px solid var(--line);border-top:3px solid var(--gold);box-shadow:0 9px 28px rgba(32,34,31,.045);transition:transform .2s ease,box-shadow .2s ease}.grocery-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.grocery-card h2{color:var(--ink);font-size:19px;margin:0}.grocery-card p{font-size:13px;margin:11px 0;color:var(--ink-soft);line-height:1.55}.grocery-card strong{color:var(--ink)}.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.days-box{background:#f0e7d2;color:var(--gold-deep);border-radius:11px;padding:9px 11px;text-align:center;min-width:70px;font-weight:750;font-size:10px}.days-box strong{display:block;font-size:22px;color:var(--ink)}.status-badge{display:inline-block;padding:6px 10px;border-radius:20px;font-weight:800;font-size:11px;margin-top:4px}.status-fresh{background:#e6ede1;color:#45613c}.status-expiring{background:#f6e9cb;color:#805d1f}.status-expired{background:#f5dfdc;color:#943d35}.remove-button{background:#fff4f1;color:var(--danger);border:1px solid #efd0ca;font-size:12px;padding:9px 13px}.empty-state{grid-column:1/-1;background:var(--paper);border:1px dashed #d9d1c0;padding:42px 25px;border-radius:18px;color:var(--muted);line-height:1.8}#storageMessage{max-width:650px;margin:22px auto;padding:20px;background:#f8f4e9;border:1px solid var(--line);border-radius:14px;line-height:1.7;text-align:left;min-height:30px;color:var(--ink-soft)}
+.photo-choice{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:12px 15px;border:1px solid #d8c79e;border-radius:10px;background:#fffdf8;color:#292b24;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap}.photo-choice:hover{border-color:var(--gold-deep);background:#f4ecd9}.scan-actions input[type="file"]{display:none}.scan-actions input[type="file"]::file-selector-button{padding:8px 10px;border:0;border-radius:7px;background:#ece5d5;color:#2a2b25;font-weight:700;cursor:pointer}@media(max-width:760px){.brand-status{display:none}.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat-card{padding:18px 14px}.stat-number{font-size:31px}.menu button{width:calc(50% - 8px);min-width:145px;min-height:112px}.form-grid{grid-template-columns:1fr}.feature-card{width:min(100%,330px)}.hero-symbol{width:55px;height:55px;font-size:31px}.logo-name{font-size:40px}.home{padding:54px 18px}.dashboard{padding-top:88px}.dashboard>button{top:18px;right:18px}.page{padding:35px 14px 50px}.feature-strip{margin-top:38px}}
+@media(max-width:430px){.brand-word{font-size:16px}.brand-attribution{font-size:8px}.menu button{width:100%;max-width:350px}.scan-actions{align-items:stretch;flex-direction:column}.scan-actions input,.scan-actions button{width:100%}.hero-brand{gap:12px}.home h2{font-size:31px}.home>p{font-size:14px}.feature-card{min-height:0}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+
+/* STIVA INTELLIGENCE: Use First, recipes and shopping list */
+.intelligence-panel{max-width:1120px;margin:22px auto 30px;padding:26px;text-align:left;background:linear-gradient(135deg,#20231e,#151713);border:1px solid rgba(209,177,107,.55);border-radius:20px;color:#fffdf8;box-shadow:0 16px 38px rgba(20,22,18,.12)}
+.intelligence-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap}.intelligence-heading h2{margin:7px 0 8px;font-size:clamp(22px,3vw,30px);letter-spacing:-.03em}.intelligence-heading p{margin:0;color:#c5c7bd;line-height:1.65;max-width:650px;font-size:13px}.intelligence-heading .section-kicker{color:var(--gold)}
+.priority-grid,.recipe-grid{width:100%;max-width:1120px;margin:24px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;text-align:left}.priority-card,.recipe-card,.shopping-panel{background:var(--paper);border:1px solid var(--line);border-radius:17px;padding:21px;box-shadow:0 9px 26px rgba(32,34,31,.04);text-align:left}.priority-card{border-top:3px solid var(--gold)}.priority-card.priority-urgent{border-top-color:#b34b40}.priority-card.priority-soon{border-top-color:#c28d35}.priority-card h2,.recipe-card h2{font-size:18px;margin:0 0 8px;color:var(--ink)}.priority-card p,.recipe-card p{font-size:13px;color:var(--muted);line-height:1.65;margin:7px 0}.priority-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border-radius:999px;background:#f0e8d6;color:#765923;font-size:10px;font-weight:850;letter-spacing:.05em;text-transform:uppercase;margin-bottom:12px}.priority-tag.urgent{background:#f7e4e0;color:#943b33}.priority-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.priority-actions button,.recipe-card button,.shopping-add button{padding:10px 13px;font-size:12px;border-radius:10px}.priority-actions .secondary,.recipe-card .secondary{background:transparent;color:var(--ink);border-color:#d8d1c2}.empty-state{grid-column:1/-1;padding:28px;border:1px dashed #d5cbb8;border-radius:16px;background:rgba(255,253,248,.7);color:var(--muted);line-height:1.7;text-align:center}.dashboard-priority-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:20px}.mini-priority{border:1px solid rgba(209,177,107,.25);background:rgba(255,255,255,.055);border-radius:13px;padding:14px}.mini-priority strong{display:block;color:#f5e5bd;margin-bottom:5px}.mini-priority span{font-size:12px;line-height:1.5;color:#c8c9c0}.text-link-button{background:transparent!important;color:var(--gold)!important;border:1px solid rgba(209,177,107,.5)!important;margin-top:16px!important;padding:10px 14px!important}.page-intro{margin-bottom:22px!important}.recipe-ingredients{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}.ingredient-chip{display:inline-block;padding:5px 8px;border-radius:8px;background:#f0ecdf;color:#575a4e;font-size:11px}.recipe-meta{font-size:11px!important;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-deep)!important}.shopping-panel{max-width:850px;margin:28px auto}.shopping-add{display:flex;gap:10px;align-items:center}.shopping-add input{flex:1;min-width:0;padding:13px 14px;border-radius:11px;border:1px solid #d9d3c6;background:#fffefa;color:var(--ink)}.shopping-add button{background:var(--ink);color:var(--gold);white-space:nowrap}.shopping-list{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:9px}.shopping-item{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fffefa}.shopping-item input[type=checkbox]{width:18px;height:18px;accent-color:#8c743f;flex:0 0 auto}.shopping-item span{flex:1;overflow-wrap:anywhere;color:var(--ink);font-size:14px}.shopping-item.done span{text-decoration:line-through;color:#898b82}.shopping-item button{padding:7px 10px;background:transparent;color:#8d4037;border:1px solid #ead3cf;font-size:11px}.shopping-tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.shopping-tools button{padding:10px 12px;font-size:12px}.shopping-tools .secondary{background:transparent;color:var(--ink);border-color:#d8d1c2}.notice{padding:13px 15px;border-radius:12px;background:#f3eedf;color:#66542d;font-size:12px;line-height:1.6;margin:16px 0}.page .back-button{margin-top:12px}.scan-status{overflow-wrap:anywhere}
+@media(max-width:720px){.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.dashboard>button{position:static;margin-bottom:22px}.form-grid{grid-template-columns:1fr}.intelligence-panel{padding:20px}.shopping-add{align-items:stretch;flex-direction:column}.shopping-add button{width:100%}.priority-grid,.recipe-grid{grid-template-columns:1fr}}
+
+</style>
+</head>
+
+<body>
+    <header class="brand-bar">
+        <div class="brand-symbol" aria-label="Vexar Technologies logo" role="img">
+            <svg viewBox="0 0 40 40" width="30" height="30" aria-hidden="true" focusable="false">
+                <path d="M5 7 L17 33 L25 16" fill="none" stroke="#171916" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"/>
+                <path d="M22 7 L35 33 M35 7 L22 33" fill="none" stroke="#171916" stroke-width="3.4" stroke-linecap="square"/>
+            </svg>
+        </div>
+        <div><div class="brand-word">STIVA</div><div class="brand-attribution">A Vexar Technologies product</div></div>
+        <div class="brand-spacer"></div><div class="brand-status">SMART KITCHEN MANAGEMENT</div>
+    </header>
+    <!-- MOVING ORB BACKGROUND -->
+    <div class="animated-background" aria-hidden="true">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+        <div class="orb orb4"></div>
+        <div class="orb orb5"></div>
+        <div class="glow glow1"></div>
+        <div class="glow glow2"></div>
+    </div>
+
+    <!-- HOME -->
+    <div class="home">
+        <!-- INLINE LOGO: no separate image file is required -->
+        <div class="hero-brand"><div class="hero-symbol">S</div><div class="hero-word-wrap"><div class="logo-name">STIVA</div><div class="byline">A Vexar Technologies product</div></div></div>
+
+        <h2>Track freshness. Store smarter. Reduce food waste.</h2>
+
+        <p>
+            Stiva helps you track your groceries,
+            monitor expiry dates, and store food appropriately.
+        </p>
+
+        <button type="button" id="getStartedButton">Get Started</button>
+
+        <div class="feature-strip">
+            <div class="feature-card">
+                <div class="feature-icon">🥕</div>
+                <h3>Freshness Tracking</h3>
+                <p>Know what's fresh and what's not.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⏰</div>
+                <h3>Expiry Alerts</h3>
+                <p>Stay ahead of groceries nearing expiry.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🧊</div>
+                <h3>Smart Storage</h3>
+                <p>Get better storage recommendations.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="dashboard">
+      <button onclick="enableNotifications()">
+    🔔 Enable Notifications
+</button>
+
+        <h1>Welcome back to STIVA</h1>
+        <p>Here's the current status of your groceries.</p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">🛒</div>
+                <div class="stat-number" id="totalCount">0</div>
+                <div class="stat-label">Total Groceries</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🥬</div>
+                <div class="stat-number" id="freshCount">0</div>
+                <div class="stat-label">Fresh</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">⏰</div>
+                <div class="stat-number" id="expiringCount">0</div>
+                <div class="stat-label">Expiring Soon</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">⚠️</div>
+                <div class="stat-number" id="expiredCount">0</div>
+                <div class="stat-label">Expired</div>
+            </div>
+        </div>
+
+        <section class="intelligence-panel" aria-labelledby="useFirstPreviewTitle">
+            <div class="intelligence-heading">
+                <div>
+                    <div class="section-kicker">STIVA INTELLIGENCE</div>
+                    <h2 id="useFirstPreviewTitle">Your kitchen's priorities</h2>
+                    <p>STIVA sorts your tracked groceries by date so you can decide what to use first. Always check food condition and package guidance before eating.</p>
+                </div>
+                <button type="button" class="text-link-button" onclick="showUseFirst()">Open Use First →</button>
+            </div>
+            <div id="dashboardUseFirstList" class="dashboard-priority-list">
+                <div class="mini-priority"><strong>Loading your priorities…</strong><span>STIVA is checking your grocery list.</span></div>
+            </div>
+        </section>
+
+        <div class="menu">
+            <button onclick="showAddGrocery()">
+                🥕 Add Grocery<br>
+                <small>Track a new grocery item</small>
+            </button>
+
+            <button onclick="showMyGroceries()">
+                🛒 My Groceries<br>
+                <small>View your groceries</small>
+            </button>
+
+            <button onclick="showExpiringSoon()">
+                ⏰ Expiring Soon<br>
+                <small>Check what needs attention</small>
+            </button>
+
+            <button onclick="showStorageAdvisor()">
+                🧊 Storage Advisor<br>
+                <small>Get storage recommendations</small>
+            </button>
+
+            <button onclick="showUseFirst()">
+                ✦ Use First<br>
+                <small>See what needs attention first</small>
+            </button>
+
+            <button onclick="showRecipes()">
+                🍲 Cook with My Groceries<br>
+                <small>Find ideas from your inventory</small>
+            </button>
+
+            <button onclick="showShoppingList()">
+                📝 Shopping List<br>
+                <small>Keep a list that stays saved</small>
+            </button>
+        </div>
+    </div>
+
+    <!-- ADD GROCERY -->
+    <div class="page" id="add-grocery">
+        <h1>➕ Add Grocery</h1>
+        <p>Enter your grocery details</p>
+
+        <div class="form-container">
+            <section class="scan-panel" aria-labelledby="scanTitle">
+                <h3 id="scanTitle">✦ Smart grocery photo scan</h3>
+                <p>Photograph the product label. STIVA can read visible printed text and try to detect a date. Always verify the result against the package.</p>
+                <div class="scan-actions">
+                    <label class="photo-choice" for="groceryCamera">📷 Take photo</label>
+                    <input type="file" id="groceryCamera" accept="image/*" capture="environment" onchange="previewGroceryPhoto(event)" aria-label="Take a grocery label photo">
+                    <label class="photo-choice" for="groceryPhoto">▧ Upload photo</label>
+                    <input type="file" id="groceryPhoto" accept="image/*" onchange="previewGroceryPhoto(event)" aria-label="Upload a grocery label photo">
+                    <button type="button" class="gold-button" id="scanButton" onclick="scanGroceryPhoto()">Read label</button>
+                </div>
+                <img id="scanPreview" class="scan-preview" alt="Selected grocery label preview">
+                <div id="scanStatus" class="scan-status" role="status" aria-live="polite"></div>
+                <details class="scan-text-details">
+                    <summary>View text recognized from the label</summary>
+                    <pre id="scanRecognizedText">Recognized label text will appear here after scanning.</pre>
+                </details>
+                <p class="scan-note">STIVA reads visible text using browser OCR. It may misread letters or dates. Verify every detected detail against the package before saving.</p>
+            </section>
+
+            <div class="form-grid">
+            <div class="form-row">
+                <label>Grocery Name</label>
+                <input type="text" id="groceryName" placeholder="Example: Tomato">
+            </div>
+
+            <div class="form-row">
+                <label>Quantity</label>
+                <input type="text" id="quantity" placeholder="Example: 2 kg">
+            </div>
+
+            <div class="form-row">
+                <label>Grocery Type</label>
+                <select id="groceryType" onchange="changeDateField()">
+                    <option value="">Select grocery type</option>
+                    <option value="Fresh">Fresh</option>
+                    <option value="Packed">Packed</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label>Purchase Date</label>
+                <input type="date" id="purchaseDate">
+            </div>
+
+            <div class="form-row">
+                <label>Storage Method</label>
+                <select id="storageMethod">
+                    <option value="">Select storage method</option>
+                    <option value="Refrigerator">Refrigerator</option>
+                    <option value="Room Temperature">Room Temperature</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label>Storage Temperature (°C)</label>
+                <input type="number" id="temperature" placeholder="Example: 4">
+            </div>
+
+            <div class="form-row" id="expiryRow">
+                <label>Expiry Date</label>
+                <input type="date" id="expiryDate">
+            </div>
+
+            <div class="form-row">
+                <label>Reminder Days Before Expiry</label>
+                <input type="number" id="reminderDays" placeholder="Example: 2" min="0">
+            </div>
+
+            </div>
+            <button class="add-button" onclick="addGrocery()">Add Grocery</button>
+            <br>
+            <button class="back-button" onclick="backToDashboard()">← Back to Dashboard</button>
+        </div>
+    </div>
+
+    <!-- MY GROCERIES -->
+    <div class="page" id="my-groceries">
+        <h1>🛒 My Groceries</h1>
+        <p>Here are the groceries you are currently tracking.</p>
+
+        <div class="grocery-list" id="groceryList"></div>
+
+        <button class="back-button" onclick="backToDashboard()">← Back to Dashboard</button>
+    </div>
+
+    <!-- EXPIRING SOON -->
+    <div class="page" id="expiring-soon">
+        <h1>⏰ Expiring Soon</h1>
+        <p>Groceries that are close to their expiry date.</p>
+
+        <div class="grocery-list" id="expiringList"></div>
+
+        <button class="back-button" onclick="backToDashboard()">← Back to Dashboard</button>
+    </div>
+
+    <!-- USE FIRST -->
+    <div class="page" id="use-first">
+        <div class="section-kicker">STIVA INTELLIGENCE</div>
+        <h1>✦ Use First</h1>
+        <p class="page-intro">Prioritize groceries by their recorded dates. Items past their date are shown separately for review, not recommended for consumption.</p>
+        <div id="useFirstList" class="priority-grid"></div>
+        <button class="back-button" onclick="backToDashboard()">← Back to Dashboard</button>
+    </div>
+
+    <!-- RECIPES FROM INVENTORY -->
+    <div class="page" id="recipes-page">
+        <div class="section-kicker">MAKE MORE OF WHAT YOU HAVE</div>
+        <h1>🍲 Cook with My Groceries</h1>
+        <p class="page-intro">Simple recipe ideas based on ingredient names in your inventory. Check ingredients and food condition before cooking.</p>
+        <div class="notice">These are rule-based suggestions, not AI-generated recipes. Suggestions depend on the grocery names STIVA can recognize.</div>
+        <div id="recipeList" class="recipe-grid"></div>
+        <button class="back-button" onclick="backToDashboard()">← Back to Dashboard</button>
+    </div>
+
+    <!-- SHOPPING LIST -->
+    <div class="page" id="shopping-page">
+        <div class="section-kicker">PLAN YOUR NEXT SHOP</div>
+        <h1>📝 Shopping List</h1>
+        <p class="page-intro">Add what you need. Your list is saved in this browser on this device.</p>
+        <div class="shopping-panel">
+            <form class="shopping-add" id="shoppingForm">
+                <input id="shoppingInput" type="text" maxlength="100" placeholder="Add an item, e.g. oats" aria-label="Shopping list item" required>
+                <button type="submit">+ Add item</button>
+            </form>
+            <ul id="shoppingList" class="shopping-list"></ul>
+            <div id="shoppingEmpty" class="empty-state">Your shopping list is empty. Add the items you need.</div>
+            <div class="shopping-tools">
+                <button type="button" class="secondary" onclick="addUseFirstToShoppingList()">Add a priority item</button>
+                <button type="button" class="secondary" onclick="clearCompletedShoppingItems()">Clear completed</button>
+            </div>
+            <p class="notice">Shopping-list data is stored locally in your browser; it does not sync between devices or users yet.</p>
+        </div>
+        <button class="back-button" onclick="backToDashboard()">← Back to Dashboard</button>
+    </div>
+
+    <!-- STORAGE ADVISOR -->
+    <div class="page" id="storage-advisor">
+        <h1>🌡️ Storage Advisor</h1>
+        <p>Get storage recommendations for your groceries.</p>
+
+        <div class="advisor-box">
+            <div class="form-row">
+                <label>Grocery Name</label>
+                <input type="text" id="advisorGrocery" placeholder="Example: Milk">
+            </div>
+
+            <div class="form-row">
+                <label>Storage Method</label>
+                <select id="advisorStorage">
+                    <option value="">Select storage method</option>
+                    <option value="Refrigerator">Refrigerator</option>
+                    <option value="Room Temperature">Room Temperature</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label>Temperature (°C)</label>
+                <input type="number" id="advisorTemperature" placeholder="Example: 4">
+            </div>
+
+            <button onclick="giveStorageAdvice()">Check Storage</button>
+
+            <div class="message" id="storageMessage"></div>
+        </div>
+
+        <button class="back-button" onclick="backToDashboard()">← Back to Dashboard</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    <script>
+        /* ================= SMART PHOTO LABEL SCAN ================= */
+        let selectedGroceryPhoto = null;
+        let scanPreviewUrl = null;
+
+        function previewGroceryPhoto(event) {
+            const file = event.target.files && event.target.files[0];
+            const preview = document.querySelector("#scanPreview");
+            const status = document.querySelector("#scanStatus");
+            selectedGroceryPhoto = file || null;
+            if (scanPreviewUrl) URL.revokeObjectURL(scanPreviewUrl);
+            if (!file) {
+                preview.style.display = "none";
+                preview.removeAttribute("src");
+                status.textContent = "";
+                return;
+            }
+            if (!file.type.startsWith("image/")) {
+                status.textContent = "Please choose an image file.";
+                selectedGroceryPhoto = null;
+                return;
+            }
+            scanPreviewUrl = URL.createObjectURL(file);
+            preview.src = scanPreviewUrl;
+            preview.style.display = "block";
+            status.textContent = "Photo ready. Select ‘Read label’ to look for printed text and dates.";
+        }
+
+        function dateToISO(day, month, year) {
+            year = Number(year);
+            if (year < 100) year += year >= 70 ? 1900 : 2000;
+            month = Number(month);
+            day = Number(day);
+            if (year < 2000 || year > 2100 || month < 1 || month > 12 || day < 1 || day > 31) return "";
+            const date = new Date(year, month - 1, day);
+            if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) return "";
+            return formatDate(date);
+        }
+
+        function monthNumber(value) {
+            const monthNames = {
+                jan: 1, january: 1, feb: 2, february: 2, mar: 3, march: 3,
+                apr: 4, april: 4, may: 5, jun: 6, june: 6, jul: 7, july: 7,
+                aug: 8, august: 8, sep: 9, sept: 9, september: 9,
+                oct: 10, october: 10, nov: 11, november: 11, dec: 12, december: 12
+            };
+            return monthNames[String(value).toLowerCase().replace(/\.$/, "")] || 0;
+        }
+
+        function lastDayOfMonth(year, month) {
+            year = Number(year);
+            if (year < 100) year += year >= 70 ? 1900 : 2000;
+            month = Number(month);
+            if (year < 2000 || year > 2100 || month < 1 || month > 12) return "";
+            return formatDate(new Date(year, month, 0));
+        }
+
+        function findPrintedExpiryDate(text) {
+            // Only inspect text near an expiry-related label; never treat MFG/MFD alone as expiry.
+            const normalized = text.replace(/[\u2010-\u2015]/g, "-").replace(/\s+/g, " ");
+            const labelPattern = /\b(?:EXP(?:IRY|IRATION)?|USE\s*BY|BEST\s*BEFORE|BBE|VALID\s*(?:TILL|THRU|THROUGH|UPTO|UNTIL))\b\s*(?:DATE)?\s*[:.#-]?\s*([^\n;|]{1,32})/ig;
+            let labelMatch;
+            while ((labelMatch = labelPattern.exec(normalized)) !== null) {
+                const candidate = labelMatch[1].trim();
+                let match;
+                // ISO date: YYYY-MM-DD.
+                match = candidate.match(/\b(20\d{2})[/.\-](\d{1,2})[/.\-](\d{1,2})\b/);
+                if (match) {
+                    const iso = dateToISO(match[3], match[2], match[1]);
+                    if (iso) return { date: iso, raw: match[0], note: "Full date detected; verify day, month and year." };
+                }
+                // Indian date convention: DD/MM/YYYY (also accepts dots or hyphens).
+                match = candidate.match(/\b(\d{1,2})[/.\-](\d{1,2})[/.\-](\d{2,4})\b/);
+                if (match) {
+                    const iso = dateToISO(match[1], match[2], match[3]);
+                    if (iso) return { date: iso, raw: match[0], note: "Read as DD/MM/YYYY; verify the printed date carefully." };
+                }
+                // Month name formats such as 05 Oct 2027 or Oct 05, 2027.
+                match = candidate.match(/\b(\d{1,2})\s+([A-Za-z]{3,9})\.?[,]?\s+(\d{4})\b/);
+                if (match && monthNumber(match[2])) {
+                    const iso = dateToISO(match[1], monthNumber(match[2]), match[3]);
+                    if (iso) return { date: iso, raw: match[0], note: "Full date detected; verify it against the package." };
+                }
+                match = candidate.match(/\b([A-Za-z]{3,9})\.?\s+(\d{1,2})[,]?\s+(\d{4})\b/);
+                if (match && monthNumber(match[1])) {
+                    const iso = dateToISO(match[2], monthNumber(match[1]), match[3]);
+                    if (iso) return { date: iso, raw: match[0], note: "Full date detected; verify it against the package." };
+                }
+                // Many packages print expiry as MM/YYYY or MM/YY. Use month-end, clearly flagged for review.
+                match = candidate.match(/\b(\d{1,2})\s*[/.\-]\s*(\d{2,4})\b/);
+                if (match) {
+                    const month = Number(match[1]);
+                    const year = Number(match[2]);
+                    if (month >= 1 && month <= 12 && year >= 20) {
+                        const iso = lastDayOfMonth(year, month);
+                        if (iso) return { date: iso, raw: match[0], note: "Only month/year was detected, so the last day of that month was selected. Confirm the package's date format." };
+                    }
+                }
+                match = candidate.match(/\b([A-Za-z]{3,9})\.?\s+(\d{2,4})\b/);
+                if (match && monthNumber(match[1])) {
+                    const iso = lastDayOfMonth(match[2], monthNumber(match[1]));
+                    if (iso) return { date: iso, raw: match[0], note: "Only month/year was detected, so the last day of that month was selected. Confirm the package's date format." };
+                }
+            }
+            return null;
+        }
+
+        async function preparePhotoForOCR(file) {
+            // Upscale small label photos and increase grayscale contrast to help OCR.
+            const bitmap = await createImageBitmap(file);
+            const maxDimension = 2200;
+            const scale = Math.min(2, maxDimension / Math.max(bitmap.width, bitmap.height));
+            const canvas = document.createElement("canvas");
+            canvas.width = Math.max(1, Math.round(bitmap.width * scale));
+            canvas.height = Math.max(1, Math.round(bitmap.height * scale));
+            const context = canvas.getContext("2d", { willReadFrequently: true });
+            context.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+            bitmap.close();
+            const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+            const pixels = imageData.data;
+            for (let i = 0; i < pixels.length; i += 4) {
+                const gray = 0.299 * pixels[i] + 0.587 * pixels[i + 1] + 0.114 * pixels[i + 2];
+                const contrast = Math.max(0, Math.min(255, (gray - 128) * 1.25 + 128));
+                pixels[i] = pixels[i + 1] = pixels[i + 2] = contrast;
+            }
+            context.putImageData(imageData, 0, 0);
+            return canvas;
+        }
+
+        function guessProductNameFromText(text) {
+            const known = [
+                "milk", "curd", "yogurt", "paneer", "cheese", "butter", "bread", "eggs", "egg",
+                "tomato", "potato", "onion", "carrot", "apple", "banana", "spinach", "rice", "atta",
+                "flour", "dal", "lentils", "juice", "yoghurt", "biscuits", "biscuit", "cereal"
+            ];
+            const lower = text.toLowerCase();
+            for (const item of known) {
+                const escaped = item.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+                if (new RegExp("\\b" + escaped + "\\b", "i").test(lower)) {
+                    return item.charAt(0).toUpperCase() + item.slice(1);
+                }
+            }
+            const lines = text.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
+            const ignored = /^(exp|expiry|expiration|best before|use by|mfg|mfd|manufactured|packed|batch|lot|ingredients|nutrition|net wt|mrp|fssai|barcode|www\.|http)/i;
+            const candidate = lines.find(line => line.length >= 3 && line.length <= 36 && !ignored.test(line) && !/\d{2,}/.test(line));
+            return candidate ? candidate.replace(/[^a-zA-Z &'-]/g, "").trim().slice(0, 40) : "";
+        }
+
+        async function scanGroceryPhoto() {
+            const status = document.querySelector("#scanStatus");
+            const recognizedText = document.querySelector("#scanRecognizedText");
+            const scanButton = document.querySelector("#scanButton");
+            if (!selectedGroceryPhoto) {
+                status.textContent = "Choose or take a photo of a grocery label first.";
+                return;
+            }
+            if (!window.Tesseract) {
+                status.textContent = "Text recognition could not load. Check your internet connection or enter the details manually.";
+                return;
+            }
+            scanButton.disabled = true;
+            scanButton.textContent = "Reading…";
+            status.textContent = "Preparing the photo and reading the label…";
+            recognizedText.textContent = "Scanning in progress…";
+            try {
+                let imageForOCR = selectedGroceryPhoto;
+                if (typeof createImageBitmap === "function") {
+                    try { imageForOCR = await preparePhotoForOCR(selectedGroceryPhoto); }
+                    catch (preprocessError) { console.warn("Using original photo for OCR:", preprocessError); }
+                }
+                const result = await Tesseract.recognize(imageForOCR, "eng", {
+                    logger: message => {
+                        if (message.status === "recognizing text" && typeof message.progress === "number") {
+                            status.textContent = "Reading label: " + Math.round(message.progress * 100) + "%";
+                        } else if (message.status === "loading tesseract core" || message.status === "loading language traineddata") {
+                            status.textContent = "Loading text recognition…";
+                        }
+                    }
+                });
+                const text = (result.data.text || "").trim();
+                recognizedText.textContent = text || "No text could be read from this photo.";
+                if (!text) {
+                    status.textContent = "No readable text found. Try a sharp, close-up photo with good lighting and the date in focus.";
+                    return;
+                }
+                const nameGuess = guessProductNameFromText(text);
+                const expiryGuess = findPrintedExpiryDate(text);
+                const nameInput = document.querySelector("#groceryName");
+                const expiryInput = document.querySelector("#expiryDate");
+                const typeInput = document.querySelector("#groceryType");
+                let messages = [];
+                if (nameGuess) {
+                    if (!nameInput.value.trim()) {
+                        nameInput.value = nameGuess;
+                        messages.push("Possible item name filled in: " + nameGuess + ".");
+                    } else {
+                        messages.push("Possible item name: " + nameGuess + " (your existing name was kept).");
+                    }
+                } else {
+                    messages.push("Item name was not confidently recognized; check or enter it manually.");
+                }
+                if (!document.querySelector("#purchaseDate").value) {
+                    document.querySelector("#purchaseDate").value = formatDate(new Date());
+                }
+                if (expiryGuess) {
+                    if (!expiryInput.value) {
+                        expiryInput.value = expiryGuess.date;
+                        typeInput.value = "Packed";
+                        changeDateField();
+                        messages.push("Possible date " + expiryGuess.raw + " detected and filled in. " + expiryGuess.note);
+                    } else {
+                        messages.push("Possible printed date " + expiryGuess.raw + " found, but your existing expiry date was kept.");
+                    }
+                } else {
+                    messages.push("No clear expiry/best-before date found. Enter it from the package; STIVA will not guess one from a manufacturing date.");
+                }
+                status.textContent = messages.join(" ") + " Please verify all fields against the package before saving.";
+            } catch (error) {
+                console.error("Label scan failed:", error);
+                status.textContent = "Could not read this photo. Try brighter lighting, less glare, a sharper close-up, or enter details manually.";
+                recognizedText.textContent = "Scanning failed. Please try another photo.";
+            } finally {
+                scanButton.disabled = false;
+                scanButton.textContent = "Read label";
+            }
+        }
+
+        /* ================= DATA ================= */
+
+        const shelfLife = {
+            tomato: 5,
+            potato: 21,
+            onion: 30,
+            egg: 28,
+            curd: 7,
+            milk: 7,
+            bread: 7,
+            leafyvegetable: 5,
+            leafyvegetables: 5,
+            carrot: 14,
+            apple: 21,
+            banana: 7
+        };
+
+        const storageRecommendations = {
+            egg: "Refrigerator",
+            milk: "Refrigerator",
+            curd: "Refrigerator",
+            tomato: "Room Temperature",
+            potato: "Room Temperature",
+            onion: "Room Temperature",
+            bread: "Room Temperature",
+            leafyvegetable: "Refrigerator",
+            leafyvegetables: "Refrigerator",
+            carrot: "Refrigerator",
+            apple: "Refrigerator",
+            banana: "Room Temperature"
+        };
+
+        let groceries = [];
+
+function loadGroceries() {
+    fetch("/api/groceries")
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            groceries = Array.isArray(data) ? data : [];
+            updateDashboardStats();
+            renderUseFirstPreview();
+            renderRecipeSuggestions();
+            renderUseFirstPage();
+        })
+        .catch(function(error) {
+            console.log("Error loading groceries:", error);
+            groceries = Array.isArray(groceries) ? groceries : [];
+            updateDashboardStats();
+            renderUseFirstPreview();
+        });
+}
+
+loadGroceries();
+
+        /* ================= NAVIGATION ================= */
+
+        function showDashboard() {
+            document.querySelector(".home").style.display = "none";
+            hideAllPages();
+            document.querySelector(".dashboard").style.display = "block";
+            updateDashboardStats();
+        }
+
+        function hideAllPages() {
+            let pages = document.querySelectorAll(".page");
+
+            pages.forEach(function(page) {
+                page.style.display = "none";
+            });
+        }
+
+        function showAddGrocery() {
+            document.querySelector(".dashboard").style.display = "none";
+            hideAllPages();
+            document.querySelector("#add-grocery").style.display = "block";
+            if (!document.querySelector("#purchaseDate").value) {
+                document.querySelector("#purchaseDate").value = formatDate(new Date());
+            }
+        }
+
+       function showMyGroceries() {
+    document.querySelector(".dashboard").style.display = "none";
+    hideAllPages();
+    document.querySelector("#my-groceries").style.display = "block";
+
+    fetch("/api/groceries")
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            groceries = data;
+            displayGroceries();
+        })
+        .catch(function(error) {
+            console.log("Error loading groceries:", error);
+            displayGroceries();
+        });
+}
+
+        function showExpiringSoon() {
+            document.querySelector(".dashboard").style.display = "none";
+            hideAllPages();
+            document.querySelector("#expiring-soon").style.display = "block";
+            displayExpiringGroceries();
+        }
+
+        function showStorageAdvisor() {
+            document.querySelector(".dashboard").style.display = "none";
+            hideAllPages();
+            document.querySelector("#storage-advisor").style.display = "block";
+        }
+
+        function backToDashboard() {
+            document.querySelector('.home').style.display = 'none';
+            hideAllPages();
+            document.querySelector('.dashboard').style.display = 'block';
+            updateDashboardStats();
+            renderUseFirstPreview();
+        }
+
+        /* ================= DASHBOARD STATS ================= */
+
+        function updateDashboardStats() {
+            let fresh = 0;
+            let expiring = 0;
+            let expired = 0;
+
+            groceries.forEach(function(grocery) {
+                let days = daysUntilExpiry(grocery.expiryDate);
+
+                if (days < 0) {
+                    expired++;
+                }
+                else if (days <= grocery.reminderDays) {
+                    expiring++;
+                }
+                else {
+                    fresh++;
+                }
+            });
+
+            document.querySelector("#totalCount").innerText = groceries.length;
+            document.querySelector("#freshCount").innerText = fresh;
+            document.querySelector("#expiringCount").innerText = expiring;
+            document.querySelector("#expiredCount").innerText = expired;
+            if (typeof renderUseFirstPreview === "function") renderUseFirstPreview();
+        }
+
+        /* ================= DATE FIELD ================= */
+
+        function changeDateField() {
+            let type = document.querySelector("#groceryType").value;
+            let label = document.querySelector("#expiryRow label");
+
+            if (type === "Fresh") {
+                label.innerText =
+                    "Expiry Date (leave empty to calculate automatically)";
+            }
+            else {
+                label.innerText = "Expiry Date";
+            }
+        }
+
+        /* ================= ADD GROCERY ================= */
+
+        function addGrocery() {
+            let name = document.querySelector("#groceryName").value.trim();
+            let quantity = document.querySelector("#quantity").value.trim();
+            let type = document.querySelector("#groceryType").value;
+            let purchaseDate = document.querySelector("#purchaseDate").value;
+            let storage = document.querySelector("#storageMethod").value;
+            let temperature = document.querySelector("#temperature").value;
+            let expiryDate = document.querySelector("#expiryDate").value;
+            let reminderDays = document.querySelector("#reminderDays").value;
+
+            if (
+                name === "" ||
+                quantity === "" ||
+                type === "" ||
+                purchaseDate === "" ||
+                storage === "" ||
+                temperature === "" ||
+                reminderDays === ""
+            ) {
+                alert("Please fill in all required fields.");
+                return;
+            }
+
+            let searchName =
+                name.toLowerCase().replace(/\s/g, "");
+
+            if (
+                type === "Fresh" &&
+                expiryDate === "" &&
+                shelfLife[searchName]
+            ) {
+                let purchase = new Date(purchaseDate);
+
+                purchase.setDate(
+                    purchase.getDate() + shelfLife[searchName]
+                );
+
+                expiryDate = formatDate(purchase);
+            }
+
+            if (
+                type === "Fresh" &&
+                expiryDate === "" &&
+                !shelfLife[searchName]
+            ) {
+                alert(
+                    "We don't have a shelf-life estimate for this grocery. Please enter an expiry date."
+                );
+                return;
+            }
+
+            if (type === "Packed" && expiryDate === "") {
+                alert("Please enter the expiry date for a packed grocery.");
+                return;
+            }
+
+            let grocery = {
+                id: Date.now(),
+                name: name,
+                quantity: quantity,
+                type: type,
+                purchaseDate: purchaseDate,
+                storage: storage,
+                temperature: Number(temperature),
+                expiryDate: expiryDate,
+                reminderDays: Number(reminderDays)
+            };
+
+            fetch("/api/groceries", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(grocery)
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                if (data && typeof data === "object") groceries.push(data);
+                updateDashboardStats();
+                renderUseFirstPage();
+                renderRecipeSuggestions();
+                alert(name + " has been added successfully!");
+                clearForm();
+                showMyGroceries();
+            })
+            .catch(function(error) {
+                console.log("Error adding grocery:", error);
+                alert("Could not add grocery. Please try again.");
+            });
+        }
+
+        function formatDate(date) {
+            let year = date.getFullYear();
+            let month = String(date.getMonth() + 1).padStart(2, "0");
+            let day = String(date.getDate()).padStart(2, "0");
+
+            return year + "-" + month + "-" + day;
+        }
+
+        function clearForm() {
+            document.querySelector("#groceryName").value = "";
+            document.querySelector("#quantity").value = "";
+            document.querySelector("#groceryType").value = "";
+            document.querySelector("#purchaseDate").value = "";
+            document.querySelector("#storageMethod").value = "";
+            document.querySelector("#temperature").value = "";
+            document.querySelector("#expiryDate").value = "";
+            document.querySelector("#reminderDays").value = "";
+            const photoInput = document.querySelector("#groceryPhoto");
+            const cameraInput = document.querySelector("#groceryCamera");
+            if (photoInput) photoInput.value = "";
+            if (cameraInput) cameraInput.value = "";
+            selectedGroceryPhoto = null;
+            const preview = document.querySelector("#scanPreview");
+            if (preview) { preview.style.display = "none"; preview.removeAttribute("src"); }
+            const scanStatus = document.querySelector("#scanStatus");
+            if (scanStatus) scanStatus.textContent = "";
+            changeDateField();
+        }
+
+        /* ================= EXPIRY CALCULATION ================= */
+
+        function daysUntilExpiry(expiryDate) {
+            let today = new Date();
+            today.setHours(0,0,0,0);
+
+            let expiry = new Date(expiryDate);
+            expiry.setHours(0,0,0,0);
+
+            let difference = expiry - today;
+
+            return Math.ceil(
+                difference / (1000 * 60 * 60 * 24)
+            );
+        }
+
+        function getStatus(days, reminderDays) {
+            if (days < 0) {
+                return {
+                    text: "⚠️ Expired",
+                    className: "status-expired"
+                };
+            }
+
+            if (days <= reminderDays) {
+                if (days === 0) {
+                    return {
+                        text: "🚨 Expires today",
+                        className: "status-expiring"
+                    };
+                }
+
+                return {
+                    text: "⏰ Expires in " + days + " day(s)",
+                    className: "status-expiring"
+                };
+            }
+
+            return {
+                text: "✓ Fresh",
+                className: "status-fresh"
+            };
+        }
+
+        /* ================= DISPLAY GROCERIES ================= */
+
+        function createGroceryCard(grocery) {
+            let days = daysUntilExpiry(grocery.expiryDate);
+            let status = getStatus(days, grocery.reminderDays);
+
+            let card = document.createElement("div");
+            card.className = "grocery-card";
+
+            let daysText = days < 0 ? "Past" : days;
+
+            card.innerHTML =
+                "<div class='card-top'>" +
+                    "<h2>🥬 " + grocery.name + "</h2>" +
+                    "<div class='days-box'>" +
+                        "<strong>" + daysText + "</strong>" +
+                        (days < 0 ? "days" : "days left") +
+                    "</div>" +
+                "</div>" +
+
+                "<p><strong>Quantity:</strong> " +
+                    grocery.quantity + "</p>" +
+
+                "<p><strong>Type:</strong> " +
+                    grocery.type + "</p>" +
+
+                "<p><strong>Purchase Date:</strong> " +
+                    grocery.purchaseDate + "</p>" +
+
+                "<p><strong>Storage:</strong> " +
+                    grocery.storage + "</p>" +
+
+                "<p><strong>Temperature:</strong> " +
+                    grocery.temperature + "°C</p>" +
+
+                "<p><strong>Expiry Date:</strong> " +
+                    grocery.expiryDate + "</p>" +
+
+                "<p><strong>Status:</strong> " +
+                    "<span class='status-badge " +
+                    status.className + "'>" +
+                    status.text +
+                    "</span></p>" +
+
+                "<button class='remove-button' onclick='removeGrocery(" +
+                    grocery.id +
+                ")'>🗑️ Remove</button>";
+
+            return card;
+        }
+
+        function displayGroceries() {
+            let list = document.querySelector("#groceryList");
+            list.innerHTML = "";
+
+            if (groceries.length === 0) {
+                list.innerHTML =
+                    "<div class='empty-state'>" +
+                    "🛒 No groceries added yet.<br>" +
+                    "Add your first grocery to start tracking freshness." +
+                    "</div>";
+                return;
+            }
+
+            groceries.forEach(function(grocery) {
+                list.appendChild(createGroceryCard(grocery));
+            });
+        }
+
+        /* ================= REMOVE ================= */
+
+        function removeGrocery(id) {
+            fetch("/api/groceries/" + encodeURIComponent(id), { method: "DELETE" })
+                .then(function(response) {
+                    if (!response.ok) throw new Error("The server could not remove this grocery.");
+                    return response.json().catch(function() { return {}; });
+                })
+                .then(function() {
+                    groceries = groceries.filter(function(grocery) {
+                        return String(grocery.id) !== String(id);
+                    });
+                    displayGroceries();
+                    displayExpiringGroceries();
+                    updateDashboardStats();
+                    renderUseFirstPage();
+                    renderRecipeSuggestions();
+                })
+                .catch(function(error) {
+                    console.error("Error removing grocery:", error);
+                    alert("Could not remove this grocery. Please check that the STIVA server is running and try again.");
+                });
+        }
+
+        /* ================= EXPIRING ================= */
+
+        function displayExpiringGroceries() {
+            let list = document.querySelector("#expiringList");
+            list.innerHTML = "";
+
+            let expiring = groceries.filter(function(grocery) {
+                let days = daysUntilExpiry(grocery.expiryDate);
+                return days <= grocery.reminderDays;
+            });
+
+            if (expiring.length === 0) {
+                list.innerHTML =
+                    "<div class='empty-state'>" +
+                    "🎉 No groceries are currently expiring soon." +
+                    "</div>";
+                return;
+            }
+
+            expiring.forEach(function(grocery) {
+                list.appendChild(createGroceryCard(grocery));
+            });
+        }
+
+        /* ================= STIVA INTELLIGENCE ================= */
+        function safeText(value) {
+            return String(value == null ? "" : value).replace(/[&<>"']/g, function(character) {
+                return {"&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"}[character];
+            });
+        }
+
+        function groceryDays(grocery) {
+            if (!grocery || !grocery.expiryDate) return null;
+            const days = daysUntilExpiry(grocery.expiryDate);
+            return Number.isFinite(days) ? days : null;
+        }
+
+        function getPrioritizedGroceries() {
+            return groceries.map(function(grocery) {
+                return { grocery: grocery, days: groceryDays(grocery) };
+            }).filter(function(item) {
+                return item.days !== null;
+            }).sort(function(a, b) {
+                // Items already past their recorded date appear last for review.
+                const aPast = a.days < 0;
+                const bPast = b.days < 0;
+                if (aPast !== bPast) return aPast ? 1 : -1;
+                return a.days - b.days;
+            });
+        }
+
+        function renderUseFirstPreview() {
+            const container = document.getElementById("dashboardUseFirstList");
+            if (!container) return;
+            const prioritized = getPrioritizedGroceries();
+            const active = prioritized.filter(function(item) { return item.days >= 0; }).slice(0, 3);
+            const past = prioritized.filter(function(item) { return item.days < 0; }).length;
+            if (!active.length) {
+                container.innerHTML = '<div class="mini-priority"><strong>' + (groceries.length ? 'No future dates to prioritize' : 'Your inventory is waiting') + '</strong><span>' + (groceries.length ? 'Review items with missing or past dates in My Groceries.' : 'Add groceries to receive personalized priorities.') + '</span></div>';
+            } else {
+                container.innerHTML = active.map(function(item, index) {
+                    const g = item.grocery;
+                    const label = item.days === 0 ? 'Recorded date is today' : item.days === 1 ? '1 day until recorded date' : item.days + ' days until recorded date';
+                    return '<div class="mini-priority"><strong>' + (index === 0 ? '★ ' : '') + safeText(g.name) + '</strong><span>' + safeText(label) + ' · ' + safeText(g.quantity || 'Quantity not set') + '</span></div>';
+                }).join('');
+            }
+            if (past > 0) {
+                container.insertAdjacentHTML('beforeend', '<div class="mini-priority"><strong>Review ' + past + ' past-date item' + (past === 1 ? '' : 's') + '</strong><span>STIVA does not recommend consuming food based on a date alone. Check packaging and food condition.</span></div>');
+            }
+        }
+
+        function renderUseFirstPage() {
+            const container = document.getElementById("useFirstList");
+            if (!container) return;
+            const prioritized = getPrioritizedGroceries();
+            if (!prioritized.length) {
+                container.innerHTML = '<div class="empty-state">No grocery dates are available yet. Add groceries with a recorded date to build your Use First list.</div>';
+                return;
+            }
+            container.innerHTML = prioritized.map(function(item) {
+                const g = item.grocery;
+                const past = item.days < 0;
+                const urgent = item.days === 0 || item.days <= Number(g.reminderDays || 0);
+                const tagClass = past ? 'priority-tag urgent' : urgent ? 'priority-tag urgent' : 'priority-tag';
+                const tag = past ? 'Past recorded date · review' : item.days === 0 ? 'Recorded date is today' : urgent ? 'Priority item' : 'Plan ahead';
+                const daysLabel = past ? Math.abs(item.days) + ' day(s) past recorded date' : item.days === 0 ? 'Recorded date: today' : item.days + ' day(s) until recorded date';
+                const action = past ? 'Review item' : 'Mark used / remove';
+                return '<article class="priority-card ' + (urgent || past ? 'priority-urgent' : 'priority-soon') + '">' +
+                    '<span class="' + tagClass + '">' + safeText(tag) + '</span>' +
+                    '<h2>' + safeText(g.name || 'Unnamed grocery') + '</h2>' +
+                    '<p><strong>' + safeText(daysLabel) + '</strong></p>' +
+                    '<p>Quantity: ' + safeText(g.quantity || 'Not set') + '</p>' +
+                    '<p>Recorded date: ' + safeText(g.expiryDate || 'Not set') + '</p>' +
+                    '<p>' + (past ? 'Check the package guidance and the food itself. When in doubt, discard it.' : 'Consider using this ingredient in a meal soon. Date estimates are not a guarantee of food safety.') + '</p>' +
+                    '<div class="priority-actions"><button type="button" onclick="showRecipes()">Find recipe ideas</button>' +
+                    (past ? '<button type="button" class="secondary" onclick="showMyGroceries()">Review inventory</button>' : '<button type="button" class="secondary" onclick="removeGrocery(' + JSON.stringify(g.id) + ')">' + action + '</button>') +
+                    '</div></article>';
+            }).join('');
+        }
+
+        function showUseFirst() {
+            document.querySelector('.home').style.display = 'none';
+            document.querySelector('.dashboard').style.display = 'none';
+            hideAllPages();
+            document.getElementById('use-first').style.display = 'block';
+            renderUseFirstPage();
+        }
+
+        const recipeIdeas = [
+            {name:'Tomato & Onion Quick Sauté', keys:['tomato','onion'], extra:['oil','salt','spices'], steps:'Chop the vegetables, sauté onion until softened, add tomato and seasoning, then cook until tender.', time:'15 min'},
+            {name:'Potato & Onion Skillet', keys:['potato','onion'], extra:['oil','salt','spices'], steps:'Dice potatoes and onion. Cook in a covered pan with a little oil and seasoning until the potato is fully tender.', time:'25 min'},
+            {name:'Egg Toast', keys:['egg','bread'], extra:['salt','pepper'], steps:'Cook the egg thoroughly and serve with toasted bread. Keep eggs refrigerated according to package guidance.', time:'10 min'},
+            {name:'Banana Oat Bowl', keys:['banana','oat'], extra:['milk','curd'], steps:'Slice banana over oats and add milk or curd if available. Use only ingredients that are still in good condition.', time:'5 min'},
+            {name:'Carrot & Potato Soup', keys:['carrot','potato'], extra:['onion','stock','salt'], steps:'Simmer chopped carrot and potato with onion in water or stock until soft, then mash or blend and season.', time:'30 min'},
+            {name:'Apple & Curd Bowl', keys:['apple','curd'], extra:['oats','nuts'], steps:'Wash and chop the apple, then serve with fresh curd and optional oats or nuts.', time:'5 min'},
+            {name:'Spinach Egg Scramble', keys:['spinach','egg'], extra:['onion','salt'], steps:'Wash spinach well, cook it until wilted, then add egg and cook completely.', time:'12 min'},
+            {name:'Milk Banana Smoothie', keys:['milk','banana'], extra:['oats'], steps:'Blend banana with fresh milk and optional oats. Keep chilled and consume promptly.', time:'5 min'},
+            {name:'Simple Vegetable Mix', keys:['carrot','tomato'], extra:['onion','potato','spices'], steps:'Chop the available vegetables, cook thoroughly with onion and seasoning, and serve as a side dish.', time:'20 min'},
+            {name:'Bread & Tomato Toast', keys:['bread','tomato'], extra:['cheese','herbs'], steps:'Top bread with sliced tomato and optional cheese or herbs, then toast until hot and crisp.', time:'10 min'}
+        ];
+
+        function normalizedName(grocery) {
+            return String(grocery.name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+        }
+
+        function renderRecipeSuggestions() {
+            const container = document.getElementById('recipeList');
+            if (!container) return;
+            const names = groceries.map(normalizedName);
+            const ranked = recipeIdeas.map(function(recipe) {
+                const matches = recipe.keys.filter(function(key) {
+                    return names.some(function(name) { return name.includes(key); });
+                });
+                const missing = recipe.keys.filter(function(key) { return !matches.includes(key); });
+                const urgency = groceries.some(function(g) {
+                    const name = normalizedName(g);
+                    return recipe.keys.some(function(key) { return name.includes(key); }) && groceryDays(g) !== null && groceryDays(g) >= 0 && groceryDays(g) <= Number(g.reminderDays || 0);
+                }) ? 1 : 0;
+                return {recipe:recipe,matches:matches,missing:missing,urgency:urgency};
+            }).filter(function(item) { return item.matches.length > 0; }).sort(function(a,b) {
+                return b.urgency - a.urgency || b.matches.length - a.matches.length;
+            });
+            if (!ranked.length) {
+                container.innerHTML = '<div class="empty-state">Add groceries such as tomato, onion, potato, egg, bread, carrot, banana, apple, milk, curd or spinach to see matching recipe ideas.</div>';
+                return;
+            }
+            container.innerHTML = ranked.map(function(item) {
+                const r = item.recipe;
+                return '<article class="recipe-card"><div class="recipe-meta">' + safeText(r.time) + ' · SIMPLE IDEA</div><h2>' + safeText(r.name) + '</h2>' +
+                    '<p>' + safeText(r.steps) + '</p><p><strong>Matched in your inventory:</strong></p><div class="recipe-ingredients">' +
+                    item.matches.map(function(key) { return '<span class="ingredient-chip">✓ ' + safeText(key) + '</span>'; }).join('') +
+                    (item.missing.length ? item.missing.map(function(key) { return '<span class="ingredient-chip">Maybe need: ' + safeText(key) + '</span>'; }).join('') : '') +
+                    '</div><p>' + (item.urgency ? '★ Uses an ingredient marked as a priority in your inventory.' : 'Use ingredients that are still in good condition.') + '</p>' +
+                    '<button type="button" class="secondary" onclick="addShoppingItem(' + JSON.stringify(item.missing.length ? item.missing[0] : r.extra[0]) + ')">Add a missing item</button></article>';
+            }).join('');
+        }
+
+        function showRecipes() {
+            document.querySelector('.home').style.display = 'none';
+            document.querySelector('.dashboard').style.display = 'none';
+            hideAllPages();
+            document.getElementById('recipes-page').style.display = 'block';
+            renderRecipeSuggestions();
+        }
+
+        const SHOPPING_STORAGE_KEY = 'stivaFreshShoppingListV1';
+        let shoppingItems = loadShoppingItems();
+
+        function loadShoppingItems() {
+            try {
+                const saved = JSON.parse(localStorage.getItem(SHOPPING_STORAGE_KEY) || '[]');
+                return Array.isArray(saved) ? saved : [];
+            } catch (error) {
+                console.warn('Could not read STIVA shopping list:', error);
+                return [];
+            }
+        }
+
+        function saveShoppingItems() {
+            try {
+                localStorage.setItem(SHOPPING_STORAGE_KEY, JSON.stringify(shoppingItems));
+                return true;
+            } catch (error) {
+                console.error('Could not save shopping list:', error);
+                alert('Your browser could not save the list. Check browser storage settings.');
+                return false;
+            }
+        }
+
+        function addShoppingItem(value) {
+            const input = document.getElementById('shoppingInput');
+            const itemName = String(value == null ? (input ? input.value : '') : value).trim();
+            if (!itemName) return;
+            if (shoppingItems.some(function(item) { return item.name.toLowerCase() === itemName.toLowerCase() && !item.done; })) {
+                if (input && value == null) input.value = '';
+                renderShoppingList();
+                return;
+            }
+            shoppingItems.push({id:Date.now() + Math.floor(Math.random()*1000),name:itemName,done:false});
+            saveShoppingItems();
+            if (input && value == null) input.value = '';
+            renderShoppingList();
+            const shoppingPage = document.getElementById('shopping-page');
+            if (shoppingPage && shoppingPage.style.display === 'block') input && input.focus();
+        }
+
+        function toggleShoppingItem(id, checked) {
+            shoppingItems = shoppingItems.map(function(item) {
+                return String(item.id) === String(id) ? Object.assign({}, item, {done:checked}) : item;
+            });
+            saveShoppingItems();
+            renderShoppingList();
+        }
+
+        function removeShoppingItem(id) {
+            shoppingItems = shoppingItems.filter(function(item) { return String(item.id) !== String(id); });
+            saveShoppingItems();
+            renderShoppingList();
+        }
+
+        function clearCompletedShoppingItems() {
+            shoppingItems = shoppingItems.filter(function(item) { return !item.done; });
+            saveShoppingItems();
+            renderShoppingList();
+        }
+
+        function addUseFirstToShoppingList() {
+            const item = getPrioritizedGroceries().find(function(entry) { return entry.days >= 0; });
+            if (!item) {
+                alert('No future-dated grocery is available to select. Add items to your inventory first.');
+                return;
+            }
+            const replacement = prompt('Add an item related to ' + item.grocery.name + ' to your shopping list:', item.grocery.name);
+            if (replacement && replacement.trim()) addShoppingItem(replacement.trim());
+        }
+
+        function renderShoppingList() {
+            const list = document.getElementById('shoppingList');
+            const empty = document.getElementById('shoppingEmpty');
+            if (!list || !empty) return;
+            list.innerHTML = '';
+            empty.style.display = shoppingItems.length ? 'none' : 'block';
+            shoppingItems.forEach(function(item) {
+                const li = document.createElement('li');
+                li.className = 'shopping-item' + (item.done ? ' done' : '');
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = !!item.done;
+                checkbox.setAttribute('aria-label', 'Mark ' + item.name + ' complete');
+                checkbox.addEventListener('change', function() { toggleShoppingItem(item.id, checkbox.checked); });
+                const span = document.createElement('span');
+                span.textContent = item.name;
+                const remove = document.createElement('button');
+                remove.type = 'button';
+                remove.textContent = 'Remove';
+                remove.addEventListener('click', function() { removeShoppingItem(item.id); });
+                li.appendChild(checkbox);
+                li.appendChild(span);
+                li.appendChild(remove);
+                list.appendChild(li);
+            });
+        }
+
+        function showShoppingList() {
+            document.querySelector('.home').style.display = 'none';
+            document.querySelector('.dashboard').style.display = 'none';
+            hideAllPages();
+            document.getElementById('shopping-page').style.display = 'block';
+            renderShoppingList();
+        }
+
+        const shoppingForm = document.getElementById('shoppingForm');
+        if (shoppingForm) shoppingForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            addShoppingItem();
+        });
+        renderShoppingList();
+
+        /* ================= STORAGE ADVISOR ================= */
+
+        function giveStorageAdvice() {
+            let name =
+                document.querySelector("#advisorGrocery")
+                    .value.trim()
+                    .toLowerCase()
+                    .replace(/\s/g, "");
+
+            let storage =
+                document.querySelector("#advisorStorage").value;
+
+            let temperature =
+                document.querySelector("#advisorTemperature").value;
+
+            let message =
+                document.querySelector("#storageMessage");
+
+            if (
+                name === "" ||
+                storage === "" ||
+                temperature === ""
+            ) {
+                message.innerText =
+                    "Please enter all storage details.";
+                return;
+            }
+
+            let temp = Number(temperature);
+            let recommended = storageRecommendations[name];
+            let advice = "";
+
+            if (recommended) {
+                if (storage === recommended) {
+                    advice =
+                        "✅ Your storage method is suitable for " +
+                        name + ".";
+                }
+                else {
+                    advice =
+                        "⚠️ For " +
+                        name +
+                        ", the suggested storage method is " +
+                        recommended +
+                        ".";
+                }
+            }
+            else {
+                advice =
+                    "ℹ️ We don't have a specific recommendation for " +
+                    name +
+                    " yet. Follow the food package or reliable storage guidance.";
+            }
+
+            if (storage === "Refrigerator") {
+                if (temp > 4) {
+                    advice +=
+                        " Your refrigerator temperature is above 4°C. A colder refrigerator is recommended for safe cold storage.";
+                }
+                else {
+                    advice +=
+                        " Your refrigerator temperature is within the recommended range of 4°C or below.";
+                }
+            }
+
+            if (storage === "Room Temperature") {
+                if (temp < 10) {
+                    advice +=
+                        " The temperature is relatively cool for room-temperature storage.";
+                }
+                else {
+                    advice +=
+                        " Keep the grocery in a clean, dry, suitable location away from excessive heat.";
+                }
+            }
+
+            message.innerText = advice;
+        }
+
+        /* ================= SERVICE WORKER ================= */
+
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/service-worker.js")
+                .then(function() {
+                    console.log("STIVA service worker registered");
+                })
+                .catch(function(error) {
+                    console.log("Service worker registration failed:", error);
+                });
+        }
+        function urlBase64ToUint8Array(base64String) {
+    const padding = "=".repeat((4 - base64String.length % 4) % 4);
+
+    const base64 = (base64String + padding)
+        .replace(/-/g, "+")
+        .replace(/_/g, "/");
+
+    const rawData = window.atob(base64);
+
+    return Uint8Array.from(
+        [...rawData].map(char => char.charCodeAt(0))
+    );
+}
+async function enableNotifications() {
+
+    if (!("Notification" in window)) {
+        alert("Notifications are not supported on this device.");
+        return;
+    }
+
+    if (!("serviceWorker" in navigator)) {
+        alert("Service Worker is not supported on this device.");
+        return;
+    }
+
+    if (!("PushManager" in window)) {
+        alert("Push notifications are not supported in this browser.");
+        return;
+    }
+
+    try {
+
+        const permission = await Notification.requestPermission();
+
+        if (permission !== "granted") {
+            alert("Notifications were not enabled.");
+            return;
+        }
+
+        // Get VAPID public key from Flask
+        const keyResponse = await fetch("/api/push/public-key");
+        const keyData = await keyResponse.json();
+
+        if (!keyResponse.ok || !keyData.publicKey) {
+            throw new Error(
+                keyData.error || "VAPID public key is unavailable."
+            );
+        }
+
+        // Wait for service worker
+        const registration = await navigator.serviceWorker.ready;
+
+        // Check if already subscribed
+        let subscription = await registration.pushManager.getSubscription();
+
+        if (!subscription) {
+            subscription = await registration.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: urlBase64ToUint8Array(
+                    keyData.publicKey
+                )
+            });
+        }
+
+        // Save subscription in Flask database
+        const response = await fetch("/api/push/subscribe", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(subscription.toJSON())
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                result.error || "Could not save notification subscription."
+            );
+        }
+
+        alert("🔔 Notifications enabled successfully!");
+
+    } catch (error) {
+
+        console.error("Push subscription error:", error);
+
+        alert(
+            "Could not enable notifications.\n\n" +
+            error.message
+        );
+    }
+}
+    function checkExpiryNotifications() {
+        if (!('Notification' in window) || Notification.permission !== 'granted' || !('serviceWorker' in navigator)) return;
+        const todayKey = formatDate(new Date());
+        let sent = {};
+        try { sent = JSON.parse(localStorage.getItem('stivaExpiryRemindersSent') || '{}') || {}; } catch (error) { sent = {}; }
+        groceries.forEach(function(grocery) {
+            const days = daysUntilExpiry(grocery.expiryDate);
+            const reminderDays = Number(grocery.reminderDays || 0);
+            if (days < 0 || days > reminderDays) return;
+            const key = String(grocery.id) + ':' + todayKey + ':' + days;
+            if (sent[key]) return;
+            sent[key] = true;
+            navigator.serviceWorker.ready.then(function(registration) {
+                if (registration.active) {
+                    registration.active.postMessage({
+                        type: 'EXPIRY_REMINDER',
+                        message: grocery.name + (days === 0 ? ' has its recorded date today.' : ' has its recorded date in ' + days + ' day(s).')
+                    });
+                }
+            }).catch(function(error) { console.warn('Could not show expiry reminder:', error); });
+        });
+        // Keep the browser store small: only today's entries are needed for deduplication.
+        const compact = {};
+        Object.keys(sent).forEach(function(key) { if (key.indexOf(':' + todayKey + ':') !== -1) compact[key] = sent[key]; });
+        try { localStorage.setItem('stivaExpiryRemindersSent', JSON.stringify(compact)); } catch (error) { /* storage is optional */ }
+    }
+
+// Explicitly expose navigation functions for button actions and bind Get Started safely.
+        window.showDashboard = showDashboard;
+        window.showUseFirst = showUseFirst;
+        window.showRecipes = showRecipes;
+        window.showShoppingList = showShoppingList;
+        window.removeGrocery = removeGrocery;
+        window.addShoppingItem = addShoppingItem;
+        const startButton = document.getElementById("getStartedButton");
+        if (startButton) {
+            startButton.addEventListener("click", showDashboard);
+        }
+
+setInterval(function() {
+    checkExpiryNotifications();
+}, 60000);
+    </script>
+</body>
+</html>
+
+
+

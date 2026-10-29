@@ -1,0 +1,24 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+# Local user data and push subscriptions
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+# Python environments and generated files
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.log
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
