@@ -18,7 +18,7 @@ Date estimates and visual appearance do not establish food safety. Always follow
 
 ## My contribution
 
-I wrote the Python code independently. I used AI assistance mainly for CSS styling. This is a learning project that I am continuing to improve.
+I wrote the Python code independently. I used AI assistance for CSS styling and other . This is a learning project that I am continuing to improve.
 
 ## Technology
 
